@@ -1,0 +1,39 @@
+" enable syntax highlighting
+syn on 
+
+" tab options
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" search options
+" incremental search (search as you type)
+set incsearch 
+
+" line numbering
+set nu 
+
+" auto indent
+set ai 
+
+" no wrapping
+set nowrap
+
+" scan for wrapping
+set wrapscan
+
+" setup and show ruler
+set columns=80
+set ruler
+
+" set color scheme
+set backspace=start,indent,eol
+set t_Co=256
+colorscheme wombat256mod
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" key shortcuts
+" line numbering toggle
+map gn :set invnu<CR>
+map ^T :tabnew<CR>
