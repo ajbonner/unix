@@ -1,0 +1,1 @@
+To make use of these configuration files, copy vimrc to ~/.vimrc and copy everything else (e.g. the colors directory) to a ~/.vim folder.
