@@ -1,3 +1,17 @@
+" plugins
+filetype off 
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles('bundles')
+
+" we dont care about compatibility with vi
+set nocompatible
+
+" set yanks to go to the clipboard
+set clipboard=unnamed
+
+" time to wait after ESC (default causes an annoying delay)
+set timeoutlen=250
+
 " enable syntax highlighting
 syn on 
 
@@ -7,15 +21,17 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
+" indenting options
+" auto indent
+set ai 
+
+
 " search options
 " incremental search (search as you type)
 set incsearch 
 
 " line numbering
 set nu 
-
-" auto indent
-set ai 
 
 " no wrapping
 set nowrap
@@ -36,4 +52,8 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " key shortcuts
 " line numbering toggle
 map gn :set invnu<CR>
+" open new tabs easily
 map ^T :tabnew<CR>
+" open up nerd tree
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+
