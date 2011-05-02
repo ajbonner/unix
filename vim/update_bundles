@@ -45,6 +45,9 @@ require 'open-uri'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundles")
 
+# Create bundles dir if it doesn't exist
+Dir.mkdir bundles_dir if ! File.exists? bundles_dir
+
 FileUtils.cd(bundles_dir)
 
 # If ARGV is not empty, work only on listed bundles
