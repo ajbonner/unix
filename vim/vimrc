@@ -1,4 +1,4 @@
-" plugins
+" use pathogen to manage plugins
 filetype off 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles('bundles')
@@ -12,6 +12,10 @@ set clipboard=unnamed
 " time to wait after ESC (default causes an annoying delay)
 set timeoutlen=250
 
+" gui options
+" remove toolbar in gvim
+set guioptions-=T
+
 " enable syntax highlighting
 syn on 
 
@@ -24,7 +28,6 @@ set smarttab
 " indenting options
 " auto indent
 set ai 
-
 
 " search options
 " incremental search (search as you type)
@@ -49,11 +52,24 @@ set t_Co=256
 colorscheme wombat256mod
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" override filetype indent rules
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 " key shortcuts
 " line numbering toggle
 map gn :set invnu<CR>
-" open new tabs easily
-map ^T :tabnew<CR>
 " open up nerd tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
+" GRB: use fancy buffer closing that doesn't close the split
+cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
+nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <S-F12> :bp<CR>
 
+" configure minibufexplorer
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
