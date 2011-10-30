@@ -56,6 +56,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype make setlocal noexpandtab
 
 " key shortcuts
 " line numbering toggle
@@ -63,7 +64,7 @@ map gn :set invnu<CR>
 " open up nerd tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 " GRB: use fancy buffer closing that doesn't close the split
-cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
+cnoremap bd :BD<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
@@ -73,3 +74,10 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
+
+" CTags setup
+set tags=tags;$HOME " this will look in the current directory for 'tags', and work up until $HOME
+let tlist_php_settings = 'php;c:class;f:function;d:constant'
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_WInWidth = 40
+let Tlist_Close_on_Select = 1

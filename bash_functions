@@ -8,11 +8,22 @@ function syncwsimages() {
 }
 
 function pipeinsql() {
-  cat $1 | mysql -p $2
+  FILEINFO=$(file $1)
+  if [[ $FILEINFO =~ "bzip2" ]]; then
+    pipeinbzsql $1 $2
+  elif [[ $FILEINFO =~ "gzip" ]]; then
+    pipeingzsql $1 $2
+  else
+    cat $1 | mysql -p $2
+  fi
 }
 
 function pipeinbzsql() {
   bzcat $1 | mysql -p $2
+}
+
+function pipeingzsql() {
+  gunzip -c $1 | mysql -p $2
 }
 
 function dbdump() {
@@ -26,6 +37,19 @@ function dbdump() {
 
 function phpgrep() {
   find . -name '*.php' -print0 | xargs -0 grep "$1"
+}
+
+function useworkmonitor() {
+  xrandr --output VGA1 --mode 1920x1080 && xrandr --output LVDS1 --off
+}
+
+function usehomemonitor() {
+  xrandr --output DP3 --mode 1920x1200 && xrandr --output LVDS1 --off
+}
+
+function useinternalmonitor() {
+  EXTERNAL=`xrandr | grep -v 'LVDS1' | grep ' connected' | awk '{ print $1 }'`
+  xrandr --output LVDS1 --mode 1366x768 && xrandr --output $EXTERNAL --off
 }
 
 function printcolors() {
@@ -48,3 +72,8 @@ function printcolors() {
   echo
 }
 
+function cpufreq() {
+  for CPU in `seq 0 3`; do
+    sudo cpufreq-set -c $CPU -g $1
+  done
+}
