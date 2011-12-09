@@ -50,13 +50,19 @@ set ruler
 set backspace=start,indent,eol
 set t_Co=256
 colorscheme wombat256mod
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " override filetype indent rules
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype make setlocal noexpandtab
+
+" enable syntax autocompletion
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+let php_sql_query=1                                                                                        
+let php_htmlInStrings=1
 
 " key shortcuts
 " line numbering toggle
