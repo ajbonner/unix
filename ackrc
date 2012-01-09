@@ -1,0 +1,2 @@
+# work nicely with drupals curious sourcefile naming conventions
+--type-set=php=.php,.module,.inc,.install
