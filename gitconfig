@@ -4,3 +4,6 @@
 	branch = auto
 [alias]
     st = status -sb
+[user]
+	name = Aaron Bonner
+	email = ajbonner@gmail.com

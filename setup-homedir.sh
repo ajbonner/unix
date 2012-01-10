@@ -22,3 +22,5 @@ ln -sf $DIR/vim/vim/update_bundles ~/.vim/update_bundles
 ln -sf $DIR/vim/vim/colors ~/.vim/colors
 ln -sf $DIR/vim/vim/autoload ~/.vim/autoload
 
+# Ack grep
+ln -sf $DIR/ackrc ~/.ackrc
