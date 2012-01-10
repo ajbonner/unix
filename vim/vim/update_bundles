@@ -5,29 +5,30 @@
 # - added support for cmd-line list of bundles to update
 
 git_bundles = [ 
-  "http://github.com/astashov/vim-ruby-debugger.git",
+#  "http://github.com/astashov/vim-ruby-debugger.git",
   #"http://github.com/msanders/snipmate.vim.git",
   "http://github.com/scrooloose/nerdtree.git",
-  "http://github.com/timcharper/textile.vim.git",
-  "http://github.com/tpope/vim-cucumber.git",
-  "http://github.com/tpope/vim-fugitive.git",
+  #"http://github.com/timcharper/textile.vim.git",
+  #"http://github.com/tpope/vim-cucumber.git",
+  #"http://github.com/tpope/vim-fugitive.git",
   "http://github.com/tpope/vim-git.git",
   "http://github.com/tpope/vim-haml.git",
   "http://github.com/tpope/vim-markdown.git",
   "http://github.com/tpope/vim-rails.git",
   "http://github.com/tpope/vim-repeat.git",
   "http://github.com/tpope/vim-surround.git",
-  "http://github.com/tpope/vim-vividchalk.git",
-  "http://github.com/tsaleh/vim-align.git",
-  "http://github.com/tsaleh/vim-shoulda.git",
-  "http://github.com/tsaleh/vim-supertab.git",
-  "http://github.com/tsaleh/vim-tcomment.git",
+  #"http://github.com/tpope/vim-vividchalk.git",
+#  "http://github.com/tsaleh/vim-align.git",
+#  "http://github.com/tsaleh/vim-shoulda.git",
+#  "http://github.com/tsaleh/vim-supertab.git",
+#  "http://github.com/tsaleh/vim-tcomment.git",
   "http://github.com/vim-ruby/vim-ruby.git",
   #"http://github.com/vim-bundles/fuzzyfinder.git",
-  "https://github.com/clones/vim-fuzzyfinder.git",
-  "http://github.com/borgand/ir_black.git",
-  "https://github.com/mattn/gist-vim.git",
-  "http://github.com/Shougo/neocomplcache/tree/master",
+#  "https://github.com/clones/vim-fuzzyfinder.git",
+#  "http://github.com/borgand/ir_black.git",
+#  "https://github.com/mattn/gist-vim.git",
+#  "http://github.com/Shougo/neocomplcache/tree/master",
+   "https://github.com/kien/ctrlp.vim"
 ]
 
 vim_org_scripts = [
@@ -36,8 +37,8 @@ vim_org_scripts = [
   #["bufexplorer",   "12904", "zip"],
   ["minibufexpl",   "3640",   "plugin"],
   ["taglist",       "7701",  "zip"],
-  ["vcscommand",    "12743", "zip"],
-  ["l9", "13948", "zip"]
+#  ["vcscommand",    "12743", "zip"],
+#  ["l9", "13948", "zip"]
 ]
 
 require 'fileutils'
