@@ -25,6 +25,7 @@ set shiftwidth=4
 set expandtab
 set smarttab
 set ai       " auto indent
+set si       " use smart indenting
 set backspace=indent,eol,start
 set nowrap   " no wrapping
 set wrapscan " scan for wrapping
