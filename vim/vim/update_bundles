@@ -36,10 +36,11 @@ vim_org_scripts = [
   ["IndexedSearch", "7062",  "plugin"],
   ["jquery",        "12107", "syntax"],
   #["bufexplorer",   "12904", "zip"],
-  ["minibufexpl",   "3640",   "plugin"],
+  ["minibufexpl",   "3640",  "plugin"],
   ["taglist",       "7701",  "zip"],
+  ["jinja",         "8666",  "syntax"],
+  ["htmljinja",     "6961",  "syntax"],
 #  ["vcscommand",    "12743", "zip"],
-#  ["l9", "13948", "zip"]
 ]
 
 require 'fileutils'

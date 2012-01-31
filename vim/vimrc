@@ -52,6 +52,9 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype make setlocal noexpandtab
 
+" make twig files use jinja syntax rules
+au BufRead,BufNewFile *.twig set filetype=htmljinja
+
 " enable syntax autocompletion
 filetype plugin on
 set ofu=syntaxcomplete#Complete
