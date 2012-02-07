@@ -19,6 +19,9 @@ set guioptions-=T
 " enable syntax highlighting
 syn on 
 
+" use nice tab completion
+set wildmenu
+
 " whitespace options
 set tabstop=4
 set shiftwidth=4
@@ -74,10 +77,10 @@ nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
 
 " configure minibufexplorer
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" let g:miniBufExplMapWindowNavVim = 1
+" let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+" let g:miniBufExplModSelTarget = 1
 
 " CTags setup
 set tags=tags;$HOME " this will look in the current directory for 'tags', and work up until $HOME
