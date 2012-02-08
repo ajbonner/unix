@@ -2,6 +2,8 @@
 filetype off 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles('bundles')
+syntax on
+filetype plugin indent on
 
 " we dont care about compatibility with vi
 set nocompatible
@@ -15,9 +17,6 @@ set timeoutlen=250
 " gui options
 " remove toolbar in gvim
 set guioptions-=T
-
-" enable syntax highlighting
-syn on 
 
 " remap the leader to something more friendly
 let mapleader = ","
