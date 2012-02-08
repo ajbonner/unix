@@ -19,8 +19,17 @@ set guioptions-=T
 " enable syntax highlighting
 syn on 
 
+" remap the leader to something more friendly
+let mapleader = ","
+set timeout timeoutlen=2000 ttimeoutlen=250
+
+" reload and edit vimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+
 " use nice tab completion
 set wildmenu
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
 
 " whitespace options
 set tabstop=4
@@ -43,6 +52,13 @@ set nu
 " setup and show ruler
 set columns=80
 set ruler
+set textwidth=80
+set colorcolumn=80
+set formatoptions=qrn1
+
+" show mode in status bar
+set showmode
+set showcmd
 
 " set color scheme
 set backspace=start,indent,eol
@@ -75,6 +91,11 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
+" Use ctrl-motion to switch between windows
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 
 " configure minibufexplorer
 " let g:miniBufExplMapWindowNavVim = 1
@@ -84,10 +105,11 @@ nnoremap <silent> <S-F12> :bp<CR>
 
 " CTags setup
 set tags=tags;$HOME " this will look in the current directory for 'tags', and work up until $HOME
-let tlist_php_settings = 'php;c:class;f:function;d:constant'
+let Tlist_php_settings = 'php;c:class;f:function;d:constant'
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_WinWidth = 40
 let Tlist_Close_on_Select = 1
 let Tlist_Exit_OnlyWindow = 1
 
 " CtrlP setup
+let g:ctrlp_working_path_mode = 2
