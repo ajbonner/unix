@@ -26,6 +26,9 @@ set timeout timeoutlen=2000 ttimeoutlen=250
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
+" edit bundle config
+nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
+
 " use nice tab completion
 set wildmenu
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
