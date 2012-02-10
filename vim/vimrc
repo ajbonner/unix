@@ -29,6 +29,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " edit bundle config
 nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
 
+" save buffer as root
+nnoremap <leader>sr :w !sudo tee %<CR>
+
 " use nice tab completion
 set wildmenu
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
