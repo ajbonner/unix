@@ -1,5 +1,9 @@
 # ~/.bash_functions
 
+function myip() {
+  wget -q http://icanhazip.com -O -
+}
+
 function syncwsimages() {
   rsync --archive \
     --verbose \
