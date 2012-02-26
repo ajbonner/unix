@@ -17,6 +17,7 @@ git_bundles = [
   "http://github.com/tpope/vim-rails.git",
   "http://github.com/tpope/vim-repeat.git",
   "http://github.com/tpope/vim-surround.git",
+  "http://github.com/altercation/vim-colors-solarized",
 #  "http://github.com/tpope/vim-vividchalk.git",
 #  "http://github.com/tsaleh/vim-align.git",
 #  "http://github.com/tsaleh/vim-shoulda.git",

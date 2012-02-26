@@ -68,7 +68,12 @@ set showcmd
 " set color scheme
 set backspace=start,indent,eol
 set t_Co=256
-colorscheme wombat256mod
+" colorscheme wombat256mod
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
+
 
 " override filetype indent rules
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
