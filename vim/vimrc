@@ -67,7 +67,6 @@ set showmode
 set showcmd
 
 " set color scheme
-set backspace=start,indent,eol
 set t_Co=256
 colorscheme wombat256mod
 " let g:solarized_termtrans=1
