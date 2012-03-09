@@ -12,6 +12,7 @@ ln -sf $DIR/bash_aliases ~/.bash_aliases
 ln -sf $DIR/gitconfig ~/.gitconfig
 ln -sf $DIR/ctags ~/.ctags
 ln -sf $DIR/inputrc ~/.inputrc
+ln -sf $DIR/xsessionrc ~/.xessionrc
 
 # Vim
 if [ ! -d ~/.vim ]; then
