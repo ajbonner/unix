@@ -5,10 +5,11 @@ ABSPATH="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
 DIR=$(dirname $ABSPATH)
 
 # Bash / terminal
-cp bash_profile ~/.bash_profile
+ln -sf $DIR/profile ~/.profile
 ln -sf $DIR/bashrc ~/.bashrc
 ln -sf $DIR/bash_functions ~/.bash_functions
 ln -sf $DIR/bash_aliases ~/.bash_aliases
+ln -sf $DIR/bash_logout ~/.bash_logout
 ln -sf $DIR/gitconfig ~/.gitconfig
 ln -sf $DIR/ctags ~/.ctags
 ln -sf $DIR/inputrc ~/.inputrc
