@@ -123,6 +123,3 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_WinWidth = 40
 let Tlist_Close_on_Select = 1
 let Tlist_Exit_OnlyWindow = 1
-
-" CtrlP setup
-let g:ctrlp_working_path_mode = 2
