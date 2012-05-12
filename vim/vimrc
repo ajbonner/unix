@@ -21,7 +21,7 @@ set timeoutlen=250
 
 " remap the leader to something more friendly
 let mapleader = ","
-set timeout timeoutlen=2000 ttimeoutlen=250
+set timeout timeoutlen=1000 ttimeoutlen=150
 
 " reload and edit vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>

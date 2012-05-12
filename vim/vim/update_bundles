@@ -29,9 +29,10 @@ git_bundles = [
 #  "http://github.com/borgand/ir_black.git",
 #  "https://github.com/mattn/gist-vim.git",
 #  "http://github.com/Shougo/neocomplcache/tree/master",
-#  "https://github.com/kien/ctrlp.vim",
+  "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
-  "git://git.wincent.com/command-t.git"
+  "git://git.wincent.com/command-t.git",
+  "https://github.com/msanders/snipmate.vim"
 ]
 
 vim_org_scripts = [
@@ -59,7 +60,6 @@ FileUtils.cd(bundles_dir)
 def should_update(b)
   return ARGV.empty? || (ARGV.include?(b))
 end
-
 
 puts "Trashing #{ARGV.empty? ? 'everything' : ARGV.join(',')} (lookout!)"
 Dir["*"].each {|d| FileUtils.rm_rf d if should_update d}
