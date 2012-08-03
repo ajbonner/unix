@@ -4,6 +4,15 @@
 	branch = auto
 [alias]
     st = status -sb
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    conflicts = !git ls-files -u | cut -f 2 | sort -u
 [user]
 	name = Aaron Bonner
 	email = ajbonner@gmail.com
