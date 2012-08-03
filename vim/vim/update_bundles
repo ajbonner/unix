@@ -6,7 +6,7 @@
 
 git_bundles = [ 
 #  "http://github.com/astashov/vim-ruby-debugger.git",
-#  "http://github.com/msanders/snipmate.vim.git",
+  "http://github.com/msanders/snipmate.vim.git",
   "http://github.com/scrooloose/nerdtree.git",
 #  "http://github.com/timcharper/textile.vim.git",
 #  "http://github.com/tpope/vim-cucumber.git",
@@ -32,7 +32,6 @@ git_bundles = [
   "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
   "git://git.wincent.com/command-t.git",
-  "https://github.com/msanders/snipmate.vim"
 ]
 
 vim_org_scripts = [
