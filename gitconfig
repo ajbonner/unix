@@ -1,3 +1,5 @@
+[core]
+    filemode = false
 [color]
 	diff = auto
 	status = auto

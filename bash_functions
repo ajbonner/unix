@@ -81,3 +81,13 @@ function cpufreq() {
     sudo cpufreq-set -c $CPU -g $1
   done
 }
+
+function startvm() {
+    vagrant basebox up $1 --nogui
+}
+
+function stopvm() {
+    cd ~/Development/veewee
+    vagrant basebox halt $1
+    cd -
+}
