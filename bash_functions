@@ -83,11 +83,9 @@ function cpufreq() {
 }
 
 function startvm() {
-    vagrant basebox up $1 --nogui
+    VBoxManage startvm $1 --type headless 
 }
 
 function stopvm() {
-    cd ~/Development/veewee
-    vagrant basebox halt $1
-    cd -
+    VBoxManage controlvm $1 poweroff
 }
