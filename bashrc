@@ -21,7 +21,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # if under mac osx prepend macports paths and prefer gnubin over system bin
-if [ $(uname -o) = 'Darwin' ]; then
+if [ $(uname -s) = 'Darwin' ]; then
   PATH="/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:$PATH"
 fi
 
