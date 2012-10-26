@@ -83,9 +83,13 @@ function cpufreq() {
 }
 
 function startvm() {
-    VBoxManage startvm $1 --type headless 
+    VBoxManage startvm "$1" --type headless 
 }
 
 function stopvm() {
-    VBoxManage controlvm $1 poweroff
+    VBoxManage controlvm "$1" poweroff
+}
+
+function parse_git_branch_and_add_brackets {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }

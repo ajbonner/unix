@@ -22,7 +22,7 @@ shopt -s checkwinsize
 
 # if under mac osx prepend macports paths and prefer gnubin over system bin
 if [ $(uname -s) = 'Darwin' ]; then
-  PATH="/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:$PATH"
+  PATH="/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/opt/local/lib/php/pear/bin:$PATH"
 fi
 
 PATH="$PATH:$HOME/.rvm/bin"
@@ -54,7 +54,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-  PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
 else
   PS1='\u@\h:\w\$ '
 fi
@@ -115,6 +115,10 @@ fi
 if [ -f ~/.bash_functions ]; then
   . ~/.bash_functions
 fi
+
+# let the shell know ssh-agent
+source ~/.keychain/*-sh > /dev/null
+#ssh-add ~/Development/ssh/keys/*.pem > /dev/null 2>&1
 
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
