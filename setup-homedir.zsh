@@ -4,7 +4,9 @@
 ABSPATH="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
 DIR=$(dirname $ABSPATH)
 
-# Bash / terminal
+# Bash / zsh / terminal
+ln -sf $DIR/zsh/zshrc ~/.zshrc
+ln -sf $DIR/zsh/oh-my-zsh ~/.oh-my-zsh
 ln -sf $DIR/profile ~/.profile
 ln -sf $DIR/bash_functions ~/.bash_functions
 ln -sf $DIR/bash_aliases ~/.bash_aliases
