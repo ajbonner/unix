@@ -4,11 +4,17 @@ function myip() {
   wget -q http://icanhazip.com -O -
 }
 
-function syncwsimages() {
+function ssh_sync() {
+  if [ $# -lt 2 ]; then
+    echo 'Usage: ssh_sync remote-src local-dest';
+    return
+  fi
+
   rsync --archive \
     --verbose \
+    --progress \
     -e ssh \
-    waterscape@vpn-web-a:/home/waterscape/public_html/waterscape/var/www/media /home/aaron/Sites/waterscape/var/www
+    $1 $2 
 }
 
 function pipeinsql() {
@@ -37,23 +43,6 @@ function dbdump() {
   fi
   FILE=$3-`date +'%H%M%d%m%Y'`.sql
   mysqldump -u$1 -p$2 $3 > $FILE && bzip2 $FILE
-}
-
-function phpgrep() {
-  find . -name '*.php' -print0 | xargs -0 grep "$1"
-}
-
-function useworkmonitor() {
-  xrandr --output VGA1 --mode 1920x1080 && xrandr --output LVDS1 --off
-}
-
-function usehomemonitor() {
-  xrandr --output DP3 --mode 1920x1200 && xrandr --output LVDS1 --off
-}
-
-function useinternalmonitor() {
-  EXTERNAL=`xrandr | grep -v 'LVDS1' | grep ' connected' | awk '{ print $1 }'`
-  xrandr --output LVDS1 --mode 1366x768 && xrandr --output $EXTERNAL --off
 }
 
 function printcolors() {
