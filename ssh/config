@@ -1,0 +1,4 @@
+Host mnsdev
+    User abonner
+    Hostname mnsdev
+    IdentityFile ~/Development/mns/ops/aws/keys/abonner@mnsdev.pem
