@@ -53,4 +53,6 @@ source ~/.bash_functions
 source ~/.bash_aliases
 
 # Customize to your needs...
-export PATH=/Users/aaron/.rvm/gems/ruby-1.9.3-p286/bin:/Users/aaron/.rvm/gems/ruby-1.9.3-p286@global/bin:/Users/aaron/.rvm/rubies/ruby-1.9.3-p286/bin:/Users/aaron/.rvm/bin:/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/opt/local/lib/php/pear/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/aaron/.rvm/bin
+export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/opt/local/lib/php/pear/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
