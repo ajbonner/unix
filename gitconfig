@@ -11,6 +11,7 @@
     cp = cherry-pick
     co = checkout
     cl = clone
+    rb = rebase
     diff = diff --word-diff
     dc = diff --cached
     df = diff
