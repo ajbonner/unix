@@ -44,7 +44,7 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx)
+plugins=(git osx rvm rails rvm capistrano composer macports)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,4 +53,5 @@ source ~/.bash_aliases
 
 export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source "$HOME/.rvm/scripts/rvm"
+source "$HOME/.rvm/environments/default"
