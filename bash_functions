@@ -9,12 +9,20 @@ function ssh_sync() {
     echo 'Usage: ssh_sync remote-src local-dest';
     return
   fi
-
+  
   rsync --archive \
     --verbose \
     --progress \
     -e ssh \
     $1 $2 
+}
+
+function enable_xdebug() {
+  sudo sed -i'' 's/^;*//g' /etc/php5/conf.d/xdebug.ini 
+}
+
+function disable_xdebug() {
+  sudo sed -i'' 's/^/;/g' /etc/php5/conf.d/xdebug.ini 
 }
 
 function pipeinsql() {
