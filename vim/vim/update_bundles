@@ -33,6 +33,7 @@ git_bundles = [
 #  "https://github.com/Shougo/neocomplcache/tree/master",
   "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
+  "https://github.com/tsaleh/vim-matchit"
 ]
 
 vim_org_scripts = [
