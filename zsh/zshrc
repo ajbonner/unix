@@ -24,6 +24,9 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias irc='screen irssi -c irc.freenode.net'
+alias awsup="ec2tool --start $1"
+alias awsdown="ec2tool --stop $1"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
