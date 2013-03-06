@@ -28,6 +28,9 @@ alias irc='screen irssi -c irc.freenode.net'
 alias awsup="ec2tool --start $1"
 alias awsdown="ec2tool --stop $1"
 
+# Stop annoying 'did you mean sudo .vim'
+alias sudo="nocorrect sudo"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
