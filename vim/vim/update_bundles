@@ -33,7 +33,9 @@ git_bundles = [
 #  "https://github.com/Shougo/neocomplcache/tree/master",
   "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
-  "https://github.com/tsaleh/vim-matchit"
+  "https://github.com/tsaleh/vim-matchit",
+  "https://github.com/scrooloose/syntastic",
+#  "https://github.com/Lokaltog/powerline"
 ]
 
 vim_org_scripts = [
@@ -44,6 +46,7 @@ vim_org_scripts = [
   ["taglist",         "7701",  "zip"],
   ["jinja",           "8666",  "syntax"],
   ["htmljinja",       "6961",  "syntax"],
+  ["closetag",        "4318",  "plugin"],
   ["vcscommand",      "12743", "zip"],
 ]
 
