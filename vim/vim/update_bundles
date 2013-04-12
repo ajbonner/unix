@@ -36,6 +36,7 @@ git_bundles = [
   "https://github.com/tsaleh/vim-matchit",
   "https://github.com/scrooloose/syntastic",
 #  "https://github.com/Lokaltog/powerline"
+  "https://github.com/sickill/vim-pasta"
 ]
 
 vim_org_scripts = [
