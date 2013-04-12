@@ -31,6 +31,9 @@ alias awsdown="ec2tool --stop $1"
 # Stop annoying 'did you mean sudo .vim'
 alias sudo="nocorrect sudo"
 
+# Force macports pear to use correct active php executable
+alias pear='PHP_PEAR_PHP_BIN=php pear'
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -66,3 +69,4 @@ source "$HOME/.rvm/environments/default"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/opt/local/lib/php/pear/bin
