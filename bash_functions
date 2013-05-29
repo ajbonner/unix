@@ -27,7 +27,7 @@ function enable_xdebug_profiler() {
 }
 
 function disable_xdebug_profiler() {
-    sed -i '' '/^xdebug.profiler_enable/d' /etc/php5/conf.d/xdebug.ini
+    sudo sed -i'' '/^xdebug.profiler_enable/d' /etc/php5/conf.d/xdebug.ini
 }
 
 function disable_xdebug() {
