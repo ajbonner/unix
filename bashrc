@@ -117,7 +117,6 @@ if [ -f ~/.bash_functions ]; then
 fi
 
 # let the shell know ssh-agent
-source ~/.keychain/*-sh > /dev/null
 #ssh-add ~/Development/ssh/keys/*.pem > /dev/null 2>&1
 
 export EDITOR=$(which vim)
