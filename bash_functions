@@ -79,6 +79,10 @@ function cpufreq() {
   done
 }
 
+function vmwrun() {
+    vmrun start "$HOME/Documents/Virtual Machines.localized/$1.vmwarevm/$1.vmx" nogui
+}
+
 function startvm() {
     VBoxManage startvm "$1" --type headless 
 }

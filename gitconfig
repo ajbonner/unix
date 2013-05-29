@@ -30,3 +30,5 @@
 	email = ajbonner@gmail.com
 [github]
     user = ajbonner
+[push]
+	default = matching
