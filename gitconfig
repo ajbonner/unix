@@ -5,6 +5,8 @@
 	status = auto
 	branch = auto
 [alias]
+    ass = update-index --assume-unchanged
+    unass = update-index --no-assume-unchanged
     st = status -sb
     ci = commit
     br = branch
@@ -32,3 +34,5 @@
     user = ajbonner
 [push]
 	default = matching
+[core]
+	symlinks = true
