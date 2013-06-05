@@ -34,6 +34,8 @@ alias sudo="nocorrect sudo"
 # Force macports pear to use correct active php executable
 alias pear='PHP_PEAR_PHP_BIN=php pear'
 
+alias portup='sudo port selfupdate && sudo port upgrade outdated && sudo port uninstall inactive'
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
