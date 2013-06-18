@@ -4,6 +4,12 @@ function myip() {
   wget -q http://icanhazip.com -O -
 }
 
+function phpunit_debug() {
+  DEBUG_SERVER=$1
+  shift
+  PHP_IDE_CONFIG="servername=$DEBUG_SERVER" phpunit $@
+}
+
 function ssh_sync() {
   if [ $# -lt 2 ]; then
     echo 'Usage: ssh_sync remote-src local-dest';
