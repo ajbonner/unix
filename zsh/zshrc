@@ -35,6 +35,8 @@ alias sudo="nocorrect sudo"
 alias pear='PHP_PEAR_PHP_BIN=php pear'
 
 alias portup='sudo port selfupdate && sudo port upgrade outdated && sudo port uninstall inactive'
+alias vup="vagrant up --no-provision"
+alias vdown="vagrant halt"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"

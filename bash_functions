@@ -10,6 +10,10 @@ function phpunit_debug() {
   PHP_IDE_CONFIG="servername=$DEBUG_SERVER" phpunit $@
 }
 
+function cleanmacmenus() {
+  sudo /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user
+}
+
 function ssh_sync() {
   if [ $# -lt 2 ]; then
     echo 'Usage: ssh_sync remote-src local-dest';
