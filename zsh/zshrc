@@ -38,6 +38,8 @@ alias portup='sudo port selfupdate && sudo port upgrade outdated && sudo port un
 alias vup="vagrant up --no-provision"
 alias vdown="vagrant halt"
 
+alias mou="open -a Mou.app"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
