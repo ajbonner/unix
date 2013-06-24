@@ -4,8 +4,14 @@ function myip() {
   wget -q http://icanhazip.com -O -
 }
 
+function phpunit_debug() {
+  DEBUG_SERVER=$1
+  shift
+  PHP_IDE_CONFIG="servername=$DEBUG_SERVER" phpunit $@
+}
+
 function cleanmacmenus() {
-    sudo /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user
+  sudo /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user
 }
 
 function ssh_sync() {
