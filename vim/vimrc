@@ -34,6 +34,9 @@ nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
 " save buffer as root
 nnoremap <leader>sr :w !sudo tee %<CR>
 
+" format and indent xml using xmllint
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
 " use nice tab completion
 set wildmenu
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
