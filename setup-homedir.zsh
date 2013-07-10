@@ -14,6 +14,7 @@ ln -sf $DIR/gitconfig ~/.gitconfig
 ln -sf $DIR/ctags ~/.ctags
 ln -sf $DIR/inputrc ~/.inputrc
 ln -sf $DIR/xsessionrc ~/.xessionrc
+ln -sf $DIR/tmux/tmux.conf ~/.tmux.conf
 
 # Vim
 if [ ! -d ~/.vim ]; then
