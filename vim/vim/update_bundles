@@ -21,7 +21,7 @@ git_bundles = [
   "https://github.com/sunaku/vim-ruby-minitest",
   "https://github.com/scrooloose/nerdcommenter",
 #  "https://github.com/tpope/vim-vividchalk.git",
-#  "https://github.com/tsaleh/vim-shoulda.git",
+  "https://github.com/tsaleh/vim-shoulda.git",
   "http://github.com/tsaleh/vim-align.git",
 #  "https://github.com/tsaleh/vim-supertab.git",
 #  "https://github.com/tsaleh/vim-tcomment.git",
@@ -35,8 +35,10 @@ git_bundles = [
   "https://github.com/mileszs/ack.vim",
   "https://github.com/tsaleh/vim-matchit",
   "https://github.com/scrooloose/syntastic",
-#  "https://github.com/Lokaltog/powerline"
-  "https://github.com/sickill/vim-pasta"
+#  "https://github.com/Lokaltog/powerline",
+  "https://github.com/sickill/vim-pasta",
+  "https://github.com/kana/vim-textobj-user",
+  "https://github.com/nelstrom/vim-textobj-rubyblock"
 ]
 
 vim_org_scripts = [
