@@ -9,7 +9,9 @@ filetype plugin indent on
 set nocompatible
 
 " set yanks to go to the clipboard
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 
 " time to wait after ESC (default causes an annoying delay)
 set timeoutlen=250
