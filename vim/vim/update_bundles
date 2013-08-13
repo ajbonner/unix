@@ -35,10 +35,11 @@ git_bundles = [
   "https://github.com/mileszs/ack.vim",
   "https://github.com/tsaleh/vim-matchit",
   "https://github.com/scrooloose/syntastic",
-#  "https://github.com/Lokaltog/powerline",
+  "https://github.com/bling/vim-airline",
   "https://github.com/sickill/vim-pasta",
   "https://github.com/kana/vim-textobj-user",
-  "https://github.com/nelstrom/vim-textobj-rubyblock"
+  "https://github.com/nelstrom/vim-textobj-rubyblock",
+  "https://github.com/sjbach/lusty"
 ]
 
 vim_org_scripts = [

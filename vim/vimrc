@@ -20,7 +20,7 @@ set timeoutlen=250
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
-:set guifont=Inconsolata:h16
+:set guifont=Inconsolata:h17
 
 " remap the leader to something more friendly
 let mapleader = ","
@@ -127,3 +127,8 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_WinWidth = 40
 let Tlist_Close_on_Select = 1
 let Tlist_Exit_OnlyWindow = 1
+
+" Air Powerline setup
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'wombat'

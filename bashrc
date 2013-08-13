@@ -119,6 +119,7 @@ fi
 # let the shell know ssh-agent
 #ssh-add ~/Development/ssh/keys/*.pem > /dev/null 2>&1
 
+export PHP_IDE_CONFIG='serverName=mns.dev'
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export PAGER=$(which less)
