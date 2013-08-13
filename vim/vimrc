@@ -39,10 +39,6 @@ nnoremap <leader>sr :w !sudo tee %<CR>
 " format and indent xml using xmllint
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
-" use nice tab completion
-set wildmenu
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
-
 " whitespace options
 set tabstop=4
 set shiftwidth=4
@@ -110,6 +106,8 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 set hidden " maybe I want to switch buffers without saving
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
+
 nnoremap <F10> :b <C-Z>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
