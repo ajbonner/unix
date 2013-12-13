@@ -14,6 +14,7 @@
     co = checkout
     cl = clone
     rb = rebase
+    pr = pull --rebase
     diff = diff --word-diff
     dc = diff --cached
     df = diff
