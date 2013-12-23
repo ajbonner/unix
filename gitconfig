@@ -37,3 +37,5 @@
 	default = matching
 [core]
 	symlinks = true
+[pull]
+	rebase = true
