@@ -34,7 +34,7 @@
 [github]
     user = ajbonner
 [push]
-	default = matching
+	default = tracking
 [core]
 	symlinks = true
 [pull]
