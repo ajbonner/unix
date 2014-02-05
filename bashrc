@@ -123,4 +123,5 @@ export PHP_IDE_CONFIG='serverName=mns.dev'
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export PAGER=$(which less)
+export LESS=-r
 export LESSOPEN="| $(which lesspipe.sh) %s"

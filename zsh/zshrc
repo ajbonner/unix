@@ -66,6 +66,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bash_functions
 source ~/.bash_aliases
 
+export LESS="-r"
 export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 source "$HOME/.rvm/scripts/rvm"
