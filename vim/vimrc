@@ -13,17 +13,16 @@ if $TMUX == ''
   set clipboard+=unnamed
 endif
 
-" time to wait after ESC (default causes an annoying delay)
-set timeoutlen=250
-
 " gui options
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
-:set guifont=Inconsolata:h17
+:set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h15
 
 " remap the leader to something more friendly
 let mapleader = ","
+
+" time to wait after ESC or leader immediate mode command
 set timeout timeoutlen=1000 ttimeoutlen=150
 
 " reload and edit vimrc
@@ -37,7 +36,7 @@ nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
 nnoremap <leader>sr :w !sudo tee %<CR>
 
 " format and indent xml using xmllint
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " whitespace options
 set tabstop=4
@@ -80,16 +79,18 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype make setlocal noexpandtab
 
 " make twig files use jinja syntax rules
-au BufRead,BufNewFile *.twig set filetype=htmljinja
+autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
 
 " enable syntax autocompletion
 filetype plugin on
 set ofu=syntaxcomplete#Complete
 set completeopt=menu,preview
+
 " for PHP
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 let php_sql_query=1                                                                                        
 let php_htmlInStrings=1
+
 " for Ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
@@ -107,11 +108,6 @@ set hidden " maybe I want to switch buffers without saving
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
-
-nnoremap <F10> :b <C-Z>
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
-nnoremap <silent> <M-F12> :BufExplorer<CR>
 
 " Use ctrl-motion to switch between windows
 nnoremap <silent> <C-h> <C-w>h
