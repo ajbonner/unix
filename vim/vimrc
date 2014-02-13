@@ -62,6 +62,9 @@ set textwidth=80
 set colorcolumn=80
 set formatoptions=qrn1
 
+" highlight cursorline
+set cursorline
+
 " show mode in status bar
 set showmode
 set showcmd
@@ -83,7 +86,7 @@ autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
 
 " enable syntax autocompletion
 filetype plugin on
-set ofu=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview
 
 " for PHP
