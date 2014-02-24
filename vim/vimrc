@@ -33,10 +33,13 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
 
 " save buffer as root
-nnoremap <leader>sr :w !sudo tee %<CR>
+nnoremap <leader>sr :w !sudo tee % > /dev/null<CR>
 
 " format and indent xml using xmllint
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+" setup easy current buffer path expansion from practical vim
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 " whitespace options
 set tabstop=4
@@ -133,6 +136,9 @@ nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
+
+" Open up a new vertically split window
+nnoremap <silent> <leader>nv :bottomright vnew<CR>
 
 " CTags setup
 nnoremap <silent> <F8> :TlistToggle<CR>
