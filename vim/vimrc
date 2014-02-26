@@ -118,6 +118,10 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
+" Insert/delete line numbers
+nnoremap <leader>ln :% s/^/\=line('.'). '. ' /<CR>
+nnoremap <leader>dln :% s/^[0-9]*. //<CR>
+
 " Line numbering toggle
 map <leader>gn :set invnu<CR>
 
