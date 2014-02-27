@@ -1,23 +1,46 @@
-" use pathogen to manage plugins
-filetype off 
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles('bundles')
-syntax on
-filetype plugin indent on
+" Use pathogen to manage our runtime files
+autocmd!
+call pathogen#incubate('bundles/{}')
 
-" we dont care about compatibility with vi
+filetype plugin indent on
+syntax on
+
+" Basic vim setup
 set nocompatible
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set autoindent
+set smartindent
+set backspace=indent,eol,start
+set nowrap
+set wrapscan
+set incsearch " incremental search (search as you type)
+set number " line numbering
+set ruler " setup and show ruler
+set textwidth=78
+set colorcolumn=80
+set formatoptions=qrn1
+set cursorline " highlight cursorline
+set showmode " show mode in status bar
+set showcmd
+set showmatch
+set cmdheight=2
+set ignorecase smartcase
+set showtabline=2
+set numberwidth=5
+set winwidth=79
+set switchbuf=useopen
+
+" set color scheme
+set t_Co=256
+colorscheme wombat256mod
 
 " set yanks to go to the clipboard
 if $TMUX == ''
   set clipboard+=unnamed
 endif
-
-" gui options
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
-:set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h15
 
 " remap the leader to something more friendly
 let mapleader = ","
@@ -35,73 +58,59 @@ nnoremap <leader>eb :vsplit $HOME/.vim/update_bundles<CR>
 " save buffer as root
 nnoremap <leader>sr :w !sudo tee % > /dev/null<CR>
 
-" format and indent xml using xmllint
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-
-" setup easy current buffer path expansion from practical vim
+" setup easy current buffer path expansion -- stolen from practical vim
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-" whitespace options
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set ai       " auto indent
-set si       " use smart indenting
-set backspace=indent,eol,start
-set nowrap   " no wrapping
-set wrapscan " scan for wrapping
-
-" search options
-" incremental search (search as you type)
-set incsearch 
-
-" line numbering
-set nu 
-
-" setup and show ruler
-set ruler
-set textwidth=80
-set colorcolumn=80
-set formatoptions=qrn1
-
-" highlight cursorline
-set cursorline
-
-" show mode in status bar
-set showmode
-set showcmd
-
-" set color scheme
-set t_Co=256
-colorscheme wombat256mod
-
-" override filetype indent rules
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype xml setlocal ts=2 sts=2 sw=2
-autocmd Filetype sh setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype make setlocal noexpandtab
-
-" make twig files use jinja syntax rules
-autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
-
 " enable syntax autocompletion
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview
 
-" for PHP
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-let php_sql_query=1                                                                                        
-let php_htmlInStrings=1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM AUTOCMDS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
+  autocmd FileType text setlocal textwidth=78
 
-" for Ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  " make twig files use jinja syntax rules
+  autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
+
+  " for autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType python set sw=4 sts=4 et
+  autocmd Filetype make setlocal noexpandtab
+
+  autocmd! BufRead,BufNewFile *.sass setfiletype sass 
+
+  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+
+  " Leave the return key alone when in command line windows, since it's used
+  " to run commands there.
+  autocmd! CmdwinEnter * :unmap <CR>
+  autocmd! CmdwinLeave * :call MapCR()
+  
+  " for PHP
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  let php_sql_query=1                                                                                        
+  let php_htmlInStrings=1
+
+  " for Ruby
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+  " format and indent xml using xmllint
+  autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -115,8 +124,22 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <tab> <c-r>=InsertTabWrapper()<CR>
 inoremap <s-tab> <c-n>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<CR>
 
 " Insert/delete line numbers
 nnoremap <leader>ln :% s/^/\=line('.'). '. ' /<CR>
@@ -131,6 +154,8 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Set up nice buffer switching
 set hidden " maybe I want to switch buffers without saving
 nnoremap <leader><leader> <c-^>
+
+" Setup wildmenu
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*cache*
@@ -160,8 +185,16 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 endif
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Air Powerline setup
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'wombat'
+
+" gui options
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h15
