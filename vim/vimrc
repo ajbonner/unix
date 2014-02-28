@@ -83,7 +83,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
 
   " for autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,sh,zsh,bash,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
   autocmd Filetype make setlocal noexpandtab
 
@@ -167,7 +167,7 @@ nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
 
 " Open up a new vertically split window
-nnoremap <silent> <leader>nv :bottomright vnew<CR>
+nnoremap <silent> <leader>nv :botright vnew<CR>
 
 " CTags setup
 nnoremap <silent> <F8> :TlistToggle<CR>
