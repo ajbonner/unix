@@ -10,6 +10,10 @@ function phpunit_debug() {
   PHP_IDE_CONFIG="servername=$DEBUG_SERVER" phpunit $@
 }
 
+function pkgup() {
+  sudo apt-get update && sudo upgrade
+}
+
 function cleanmacmenus() {
   sudo /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user
 }
