@@ -5,10 +5,10 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="bira"
-ZSH_THEME="gentoo"
+#ZSH_THEME="gentoo"
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
@@ -59,7 +59,7 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx rvm rails rvm capistrano composer macports)
+plugins=(git osx rvm composer macports)
 
 source $ZSH/oh-my-zsh.sh
 
