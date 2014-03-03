@@ -28,6 +28,7 @@
     filelog = log -u
     fl = log -u
     conflicts = !git ls-files -u | cut -f 2 | sort -u
+    sup = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [user]
 	name = Aaron Bonner
 	email = ajbonner@gmail.com
