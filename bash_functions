@@ -11,7 +11,7 @@ function phpunit_debug() {
 }
 
 function pkgup() {
-  sudo apt-get update && sudo upgrade
+  sudo apt-get update && sudo apt-get upgrade
 }
 
 function cleanmacmenus() {
