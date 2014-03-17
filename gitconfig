@@ -9,6 +9,7 @@
     unass = update-index --no-assume-unchanged
     st = status -sb
     ci = commit
+    ca = commit --amend
     br = branch
     cp = cherry-pick
     co = checkout
