@@ -4,6 +4,10 @@ function myip() {
   wget -q http://icanhazip.com -O -
 }
 
+function aptup {
+  sudo apt-get update && sudo apt-get upgrade
+}
+
 function phpunit_debug() {
   DEBUG_SERVER=$1
   shift
