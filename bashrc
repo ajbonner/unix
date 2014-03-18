@@ -25,7 +25,7 @@ if [ $(uname -s) = 'Darwin' ]; then
   PATH="/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/opt/local/lib/php/pear/bin:$PATH"
 fi
 
-PATH="$PATH:$HOME/.rvm/bin"
+PATH="$PATH:$HOME/.rvm/bin:$HOME/bin"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 command -v lesspipe &> /dev/null
