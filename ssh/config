@@ -7,3 +7,7 @@ Host mnsaws
     User abonner
     Hostname mnsaws
     IdentityFile ~/Development/mns/ops/aws/keys/abonner@mnsaws.pem
+
+Host dev
+    User abonner
+    Hostname dev
