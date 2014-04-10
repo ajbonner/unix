@@ -5,7 +5,6 @@
 # - added support for cmd-line list of bundles to update
 
 git_bundles = [ 
-#  "https://github.com/astashov/vim-ruby-debugger.git",
   "https://github.com/msanders/snipmate.vim.git",
   "https://github.com/scrooloose/nerdtree.git",
   "https://github.com/timcharper/textile.vim.git",
@@ -17,23 +16,14 @@ git_bundles = [
   "https://github.com/tpope/vim-rails.git",
   "https://github.com/tpope/vim-repeat.git",
   "https://github.com/tpope/vim-surround.git",
-  "https://github.com/altercation/vim-colors-solarized",
   "https://github.com/sunaku/vim-ruby-minitest",
   "https://github.com/scrooloose/nerdcommenter",
-#  "https://github.com/tpope/vim-vividchalk.git",
   "https://github.com/tsaleh/vim-shoulda.git",
   "http://github.com/tsaleh/vim-align.git",
-#  "https://github.com/tsaleh/vim-supertab.git",
-#  "https://github.com/tsaleh/vim-tcomment.git",
   "https://github.com/vim-ruby/vim-ruby.git",
-#  "https://github.com/vim-bundles/fuzzyfinder.git",
-#  "https://github.com/clones/vim-fuzzyfinder.git",
-#  "https://github.com/borgand/ir_black.git",
-#  "https://github.com/mattn/gist-vim.git",
-#  "https://github.com/Shougo/neocomplcache/tree/master",
   "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
-  "https://github.com/tsaleh/vim-matchit",
+  "https://github.com/edsono/vim-matchit",
   "https://github.com/scrooloose/syntastic",
   "https://github.com/bling/vim-airline",
   "https://github.com/sickill/vim-pasta",
@@ -43,19 +33,16 @@ git_bundles = [
   "https://github.com/beberlei/vim-php-refactor",
   "https://github.com/austintaylor/vim-commaobject",
   "https://github.com/kana/vim-textobj-entire",
+  "https://github.com/techlivezheng/vim-plugin-minibufexpl",
   "https://github.com/tpope/vim-unimpaired"
 ]
 
 vim_org_scripts = [
   ["IndexedSearch",   "7062",  "plugin"],
-  ["jquery",          "12107", "syntax"],
-  ["bufexplorer",     "12904", "zip"],
-#  ["minibufexpl",     "3640",  "plugin"],
   ["taglist",         "7701",  "zip"],
   ["jinja",           "8666",  "syntax"],
   ["htmljinja",       "6961",  "syntax"],
   ["closetag",        "4318",  "plugin"],
-  ["vcscommand",      "12743", "zip"],
   ["sqlutil",         "19113", "zip"]
 ]
 
