@@ -151,6 +151,11 @@ map <leader>gn :set invnu<CR>
 " Nerd tree setup
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 
+" MiniBufExplorer setup
+map <Leader>mbe :MBEOpen<cr>
+map <Leader>mbc :MBEClose<cr>
+map <Leader>mbt :MBEToggle<cr>
+
 " Set up nice buffer switching
 set hidden " maybe I want to switch buffers without saving
 nnoremap <leader><leader> <c-^>
