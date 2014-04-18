@@ -3,10 +3,10 @@ Host mnsdev
     Hostname mnsdev
     IdentityFile ~/Development/mns/ops/aws/keys/abonner@mnsdev.pem
 
-Host mnsaws
-    User abonner
-    Hostname mnsaws
-    IdentityFile ~/Development/mns/ops/aws/keys/abonner@mnsaws.pem
+Host bitbucket.org
+    User git
+    Hostname bitbucket.org
+    IdentityFile ~/.ssh/id_rsa
 
 Host dev
     User abonner
