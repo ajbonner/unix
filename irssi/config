@@ -112,7 +112,6 @@ chatnets = {
 channels = (
   { name = "#zftalk"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#magento"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#gamedev"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#linux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#debian"; chatnet = "freenode"; autojoin = "yes"; }
 );
@@ -288,50 +287,6 @@ settings = {
   "fe-common/core" = { theme = "xchat"; };
   "perl/core/scripts" = { nicklist_automode = "SCREEN"; };
 };
-windows = {
-  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#zftalk";
-        tag = "freenode";
-      }
-    );
-  };
-  3 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#magento";
-        tag = "freenode";
-      }
-    );
-  };
-  4 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#gamedev";
-        tag = "freenode";
-      }
-    );
-  };
-  5 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "##linux";
-        tag = "freenode";
-      }
-    );
-  };
-};
-mainwindows = { 1 = { first_line = "1"; lines = "38"; }; };
 ignores = (
   { mask = "channel"; level = "JOINS QUITS"; },
   { level = "JOINS QUITS"; channels = ( "#zftalk" ); },
@@ -340,3 +295,47 @@ ignores = (
   { level = "JOINS QUITS"; channels = ( "#debian" ); },
   { level = "JOINS QUITS"; channels = ( "#gamedev" ); }
 );
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#magento";
+        tag = "Freenode";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#zftalk";
+        tag = "Freenode";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "##linux";
+        tag = "Freenode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian";
+        tag = "Freenode";
+      }
+    );
+  };
+};
+mainwindows = { 1 = { first_line = "1"; lines = "64"; }; };
