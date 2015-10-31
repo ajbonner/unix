@@ -4,16 +4,6 @@ function myip() {
   wget -q http://icanhazip.com -O -
 }
 
-function aptup {
-  sudo apt-get update && sudo apt-get upgrade
-}
-
-function phpunit_debug() {
-  DEBUG_SERVER=$1
-  shift
-  PHP_IDE_CONFIG="servername=$DEBUG_SERVER" phpunit $@
-}
-
 function pkgup() {
   sudo apt-get update && sudo apt-get upgrade
 }
@@ -33,23 +23,6 @@ function ssh_sync() {
     --progress \
     -e ssh \
     $1 $2 
-}
-
-function enable_xdebug() {
-  sudo sed -i'' 's/^;*//g' /etc/php5/conf.d/xdebug.ini 
-}
-
-function enable_xdebug_profiler() {
-    enable_xdebug
-    echo 'xdebug.profiler_enable=1' | sudo tee -a /etc/php5/conf.d/xdebug.ini >/dev/null
-}
-
-function disable_xdebug_profiler() {
-    sudo sed -i'' '/^xdebug.profiler_enable/d' /etc/php5/conf.d/xdebug.ini
-}
-
-function disable_xdebug() {
-  sudo sed -i'' 's/^/;/g' /etc/php5/conf.d/xdebug.ini 
 }
 
 function pipeinsql() {
@@ -100,24 +73,22 @@ function printcolors() {
   echo
 }
 
-function cpufreq() {
-  for CPU in `seq 0 3`; do
-    sudo cpufreq-set -c $CPU -g $1
-  done
-}
-
-function vmwrun() {
-    vmrun start "$HOME/Documents/Virtual Machines.localized/$1.vmwarevm/$1.vmx" nogui
-}
-
-function startvm() {
-    VBoxManage startvm "$1" --type headless 
-}
-
-function stopvm() {
-    VBoxManage controlvm "$1" poweroff
-}
-
 function parse_git_branch_and_add_brackets {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+}
+
+function stage {
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap staging deploy
+}
+
+function sweettooth {
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap sweettooth deploy
+}
+
+function deploy {
+  if [ $# -eq 0 ]; then
+    cap production deploy
+  else
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap $1 deploy
+  fi
 }
