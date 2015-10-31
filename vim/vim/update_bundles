@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
-# Changelog:
-# - added zip support
-# - added support for cmd-line list of bundles to update
+require 'fileutils'
+require 'open-uri'
 
 git_bundles = [ 
+  "https://github.com/henrik/vim-indexed-search",
+  "https://github.com/vim-scripts/taglist.vim",
   "https://github.com/msanders/snipmate.vim.git",
   "https://github.com/scrooloose/nerdtree.git",
   "https://github.com/timcharper/textile.vim.git",
@@ -19,7 +20,7 @@ git_bundles = [
   "https://github.com/sunaku/vim-ruby-minitest",
   "https://github.com/scrooloose/nerdcommenter",
   "https://github.com/tsaleh/vim-shoulda.git",
-  "http://github.com/tsaleh/vim-align.git",
+  "https://github.com/tsaleh/vim-align.git",
   "https://github.com/vim-ruby/vim-ruby.git",
   "https://github.com/kien/ctrlp.vim",
   "https://github.com/mileszs/ack.vim",
@@ -33,21 +34,14 @@ git_bundles = [
   "https://github.com/beberlei/vim-php-refactor",
   "https://github.com/austintaylor/vim-commaobject",
   "https://github.com/kana/vim-textobj-entire",
-  "https://github.com/techlivezheng/vim-plugin-minibufexpl",
-  "https://github.com/tpope/vim-unimpaired"
+  "https://github.com/tpope/vim-unimpaired",
+  "https://github.com/Lokaltog/vim-easymotion",
+  "https://github.com/jeetsukumaran/vim-buffergator",
+  "https://github.com/shawncplus/phpcomplete.vim",
+  "https://github.com/nelstrom/vim-visual-star-search",
+  "https://github.com/Glench/Vim-Jinja2-Syntax",
+  "https://github.com/Valloric/YouCompleteMe"
 ]
-
-vim_org_scripts = [
-  ["IndexedSearch",   "7062",  "plugin"],
-  ["taglist",         "7701",  "zip"],
-  ["jinja",           "8666",  "syntax"],
-  ["htmljinja",       "6961",  "syntax"],
-  ["closetag",        "4318",  "plugin"],
-  ["sqlutil",         "19113", "zip"]
-]
-
-require 'fileutils'
-require 'open-uri'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundles")
 
@@ -70,18 +64,5 @@ git_bundles.each do |url|
   puts "  Unpacking #{url} into #{dir}"
   `git clone #{url} #{dir}`
   FileUtils.rm_rf(File.join(dir, ".git"))
-end
-
-vim_org_scripts.each do |name, script_id, script_type|
-  next unless should_update name
-  puts "  Downloading #{name}"
-  local_file = File.join(name, script_type, "#{name}.#{script_type == 'zip' ? 'zip' : 'vim'}")
-  FileUtils.mkdir_p(File.dirname(local_file))
-  File.open(local_file, "w") do |file|
-    file << open("http://www.vim.org/scripts/download_script.php?src_id=#{script_id}").read
-  end
-  if script_type == 'zip'
-    %x(unzip -d #{name} #{local_file})
-  end
 end
 
