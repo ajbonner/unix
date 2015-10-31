@@ -7,6 +7,7 @@
 [alias]
     ass = update-index --assume-unchanged
     unass = update-index --no-assume-unchanged
+    m = merge
     st = status -sb
     ci = commit
     ca = commit --amend
@@ -38,7 +39,8 @@
 [push]
 	default = tracking
 [core]
-	symlinks = true
+    symlinks = true
+    preloadindex = true
 [merge]
 	ff = only
 [pull]
