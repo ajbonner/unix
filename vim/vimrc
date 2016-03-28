@@ -33,9 +33,16 @@ set numberwidth=5
 set winwidth=79
 set switchbuf=useopen
 
+" Show . char for trailing whitespace
+" set list
+" set listchars=trail:.
+
 " set color scheme
 set t_Co=256
-colorscheme wombat256mod
+"colorscheme wombat256mod
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " set yanks to go to the clipboard
 if $TMUX == ''
@@ -197,7 +204,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " Air Powerline setup
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'wombat'
+"let g:airline_theme = 'wombat'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 

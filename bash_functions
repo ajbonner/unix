@@ -92,3 +92,10 @@ function deploy {
     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap $1 deploy
   fi
 }
+
+
+function listbranches() {
+  for k in $(git branch | perl -pe s/^..//); do 
+    echo -e $(git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1)\\t$k
+  done | sort -r
+}
