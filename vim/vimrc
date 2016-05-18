@@ -1,6 +1,6 @@
 " Use pathogen to manage our runtime files
 autocmd!
-call pathogen#incubate('bundles/{}')
+call pathogen#infect('bundles/{}')
 
 filetype plugin indent on
 syntax on
