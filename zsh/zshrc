@@ -58,6 +58,7 @@ plugins=(git osx rvm composer macports vagrant ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
+source /opt/local/etc/profile.d/z.sh
 source ~/.bash_functions
 source ~/.bash_aliases
 export LESS="-r"
@@ -65,7 +66,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/usr/bin:/b
 
 source "$HOME/.rvm/scripts/rvm"
 source "$HOME/.rvm/environments/default"
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 if [ -e $HOME/.dircolors ]; then
