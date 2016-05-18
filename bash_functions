@@ -99,3 +99,17 @@ function listbranches() {
     echo -e $(git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1)\\t$k
   done | sort -r
 }
+
+function mkv2mp4() {
+  if [ ! $# -eq 1 ]; then 
+    echo "Usage: mkv2mp4 <file.mkv>"
+    return 1
+  fi
+
+  if [[ ${1##*.} != "mkv" ]]; then
+    echo "Input must be an mkv file"
+    return 1
+  fi
+
+  ffmpeg -i $1 -vcodec copy -acodec copy ${1%.*}.mp4
+}
