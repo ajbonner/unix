@@ -113,3 +113,27 @@ function mkv2mp4() {
 
   ffmpeg -i $1 -vcodec copy -acodec copy ${1%.*}.mp4
 }
+
+function add_key() {
+  if [ $(basename $SHELL) == "zsh" ]; then
+    READ_CMD="read -A -r KEY_PARTS <<< $1"
+  else 
+    READ_CMD="read -a -r KEY_PARTS <<< $1"
+  fi
+
+  if [ ! $# -eq 1 ]; then
+    echo "Usage: add_key user@host"
+    return 1
+  fi
+  IFS="@" eval $READ_CMD
+  KEY_FILE="$(find $HOME/.ssh/ -name ${KEY_PARTS[2]}_${KEY_PARTS[1]} | head -n 1)"
+  
+  if [ ! -z $KEY_FILE ]; then
+    ssh-add $KEY_FILE
+  else 
+    echo "Key not found for $1"
+    return 1
+  fi
+}
+  
+
