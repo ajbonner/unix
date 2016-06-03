@@ -54,11 +54,10 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx rvm composer macports vagrant ssh-agent)
+plugins=(z git osx rvm composer macports vagrant ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
-source /opt/local/etc/profile.d/z.sh
 source ~/.bash_functions
 source ~/.bash_aliases
 export LESS="-r"
