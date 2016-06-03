@@ -66,7 +66,15 @@ export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/usr/bin:/b
 source "$HOME/.rvm/scripts/rvm"
 source "$HOME/.rvm/environments/default"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
+
 if [ -e $HOME/.dircolors ]; then
   eval $(dircolors $HOME/.dircolors)
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+
+PATH="vendor/bin:$PATH"
+PATH="node_modules/.bin:$PATH"
