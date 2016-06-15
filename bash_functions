@@ -78,24 +78,19 @@ function parse_git_branch_and_add_brackets {
 }
 
 function stage {
-  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap staging deploy
-}
-
-function sweettooth {
-  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap sweettooth deploy
+  CAP_STAGE=staging
+  if [ $# -gt 0 ]; then
+    CAP_STAGE=$1
+  fi
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap $CAP_STAGE deploy
 }
 
 function deploy {
-  if [ $# -eq 0 ]; then
-    cap production deploy
-  else
-    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap $1 deploy
-  fi
+  cap production deploy
 }
 
-
 function listbranches() {
-  for k in $(git branch | perl -pe s/^..//); do 
+  for k in $(git branch | perl -pe s/^..//); do
     echo -e $(git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1)\\t$k
   done | sort -r
 }
