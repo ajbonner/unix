@@ -24,7 +24,7 @@ git_bundles = [
   #"https://github.com/vim-ruby/vim-ruby.git",
   #"https://github.com/kien/ctrlp.vim",
   #"https://github.com/mileszs/ack.vim",
-  "https://github.com/edsono/vim-matchit",
+  "https://github.com/jwhitley/vim-matchit",
   "https://github.com/scrooloose/syntastic",
   "https://github.com/bling/vim-airline",
   "https://github.com/vim-airline/vim-airline-themes",
