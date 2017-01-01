@@ -131,4 +131,12 @@ function add_key() {
   fi
 }
   
-
+nvm_update() {
+    echo "\033[32mAbout to update NVM...\033[0m";
+    sleep 5
+    cd "$NVM_DIR"
+    git fetch -p
+    git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+    source "$NVM_DIR/nvm.sh"
+    cd "$OLDPWD"
+}
