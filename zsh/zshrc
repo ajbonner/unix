@@ -61,13 +61,13 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bash_functions
 source ~/.bash_aliases
 export LESS="-r"
-export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 source "$HOME/.rvm/scripts/rvm"
 source "$HOME/.rvm/environments/default"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 if [ -e $HOME/.dircolors ]; then
   eval $(dircolors $HOME/.dircolors)
