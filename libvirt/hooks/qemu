@@ -1,0 +1,17 @@
+#!/bin/bash
+
+###############################################################################
+#
+# See https://libvirt.org/hooks.html for documentation
+#
+###############################################################################
+if [[ $1 == "aaronbonner.io" ]]; then
+  if [[ $2 == "stopped" || $2 == "reconnect" ]]; then
+    iptables -S -t nat | grep '/abio-nat/' | sed 's/^-A //' | while read rule; do iptables -t nat-D $rule; done
+    iptables -S | grep '/abio-fwd/' | while read rule; do iptables -D $rule; done
+  fi
+  if [[ $2 == "started" || $2 == "reconnect" ]]; then
+    iptables -m comment --comment "abio-nat" -t nat -A PREROUTING -d 199.193.115.201 -p tcp --dport 2277 -j DNAT --to 192.168.122.77:22
+    iptables -m comment --comment "abio-fwd" -I FORWARD -d 192.168.122.77/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+  fi
+fi
