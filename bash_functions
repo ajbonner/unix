@@ -131,7 +131,7 @@ function add_key() {
   fi
 }
   
-nvm_update() {
+upgrade_nvm() {
     echo "\033[32mAbout to update NVM...\033[0m";
     sleep 5
     cd "$NVM_DIR"
