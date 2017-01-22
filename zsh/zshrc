@@ -54,9 +54,13 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z git osx rvm composer macports vagrant ssh-agent)
+plugins=(z git osx composer macports vagrant ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
+
+# SSH Agent Config
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source ~/.bash_functions
 source ~/.bash_aliases
@@ -73,8 +77,14 @@ if [ -e $HOME/.dircolors ]; then
   eval $(dircolors $HOME/.dircolors)
 fi
 
+PATH="vendor/bin:$PATH"
+PATH="node_modules/.bin:$PATH"
+PATH="/Applications/apache-jmeter-3.0/bin:$PATH"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
-PATH="vendor/bin:$PATH"
-PATH="node_modules/.bin:$PATH"
+source "$HOME/.rvm/scripts/rvm"
+source "$HOME/.rvm/environments/default"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
