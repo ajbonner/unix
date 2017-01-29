@@ -1,0 +1,31 @@
+#!/bin/bash
+EXTERNAL_IP=199.193.115.207
+
+virt_addr() {
+  local ADDR=$(arp -n | grep $(cat /etc/libvirt/qemu/$1.xml | grep -oP "mac address='\K([[0-9a-fA-F:]+)") | awk '{ print $1 }')
+  echo "$ADDR"
+}
+
+if [[ $1 == "dev2" ]]; then
+  DEV2_IP=192.168.122.3
+  if [[ $2 == "stopped" ]]; then
+    iptables -S -t nat | grep 'dev2-nat' | sed 's/^-A //' | while read rule; do iptables -t nat -D $rule; done
+    iptables -S | grep 'dev2-fwd' | sed 's/^-A //' | while read rule; do iptables -D $rule; done
+  fi
+  if [[ $2 == "started" ]]; then
+    iptables -m comment --comment "dev2-nat" -t nat -A PREROUTING -d $EXTERNAL_IP -p tcp --dport 2242 -j DNAT --to $DEV2_IP:22
+    iptables -m comment --comment "dev2-fwd" -I FORWARD -d $DEV2_IP/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+  fi
+fi
+
+if [[ $1 == "search.muscleandstrength.com" ]]; then
+  if [[ $2 == "stopped" ]]; then
+    iptables -S -t nat | grep 'search-nat' | sed 's/^-A //' | while read rule; do iptables -t nat -D $rule; done
+    iptables -S | grep 'search-fwd' | sed 's/^-A //' | while read rule; do iptables -D $rule; done
+  fi
+  if [[ $2 == "started" ]]; then
+    SEARCH_IP=192.168.122.58
+    iptables -m comment --comment "search-nat" -t nat -A PREROUTING -d $EXTERNAL_IP -p tcp --dport 2233 -j DNAT --to $SEARCH_IP:22
+    iptables -m comment --comment "search-fwd" -I FORWARD -d $SEARCH_IP/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+  fi
+fi

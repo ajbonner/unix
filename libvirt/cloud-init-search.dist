@@ -1,0 +1,41 @@
+#cloud-config
+fqdn: some.server.com
+manage_etc_hosts: localhost
+
+users:
+  - name: abonner
+    groups: admin
+    gecos: Aaron Bonner
+    shell: /bin/bash
+    lock_passwd: False
+    passwd: '' 
+    chpasswd: { expire: False }
+    ssh-authorized-keys:
+      - ''
+
+package_upgrade: true
+
+packages: 
+    - aptitude
+    - python-software-properties
+    - curl
+    - wget
+    - libcurl4-openssl-dev
+    - libxml2-dev
+    - vim-nox
+    - htop
+    - git
+    - iftop
+    - screen
+    - mailutils
+    - zip
+    - ack-grep
+    - iotop
+    - nethogs
+    - sysstat
+    - ssl-cert
+    - apache2-utils
+    - libfcgi0ldbl
+    - geoip-database-contrib
+
+timezone: America/New_York
