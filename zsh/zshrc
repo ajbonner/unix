@@ -1,10 +1,4 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 alias zshconfig="vim ~/.zshrc"
@@ -25,31 +19,11 @@ alias irc='screen irssi -c irc.freenode.net'
 # Stop annoying 'did you mean sudo .vim'
 alias sudo="nocorrect sudo"
 
-# Force macports pear to use correct active php executable
-alias pear='PHP_PEAR_PHP_BIN=php pear'
-
 alias portup='sudo port selfupdate && sudo port upgrade outdated && sudo port uninstall inactive'
 alias v='vagrant'
 alias vup="vagrant up --no-provision"
 alias vdown="vagrant halt"
-
 alias mou="open -a Mou.app"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# Stop oh-my-zsh messing with macports gnuls
-DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -66,25 +40,32 @@ source ~/.bash_functions
 source ~/.bash_aliases
 export LESS="-r"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-source "$HOME/.rvm/scripts/rvm"
-source "$HOME/.rvm/environments/default"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-if [ -e $HOME/.dircolors ]; then
-  eval $(dircolors $HOME/.dircolors)
-fi
+[ -e ${HOME}/.dircolors ] && eval $(dircolors ${HOME}/.dircolors)
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 PATH="vendor/bin:$PATH"
 PATH="node_modules/.bin:$PATH"
 PATH="/Applications/apache-jmeter-3.0/bin:$PATH"
 
+# Load any private env vars
+[ -s "${HOME}/.bash_private" ] && source "${HOME}/.bash_private"
+[ -s "${HOME}/homebrew_env.sh" ] && source "${HOME}/homebrew_env.sh"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
-source "$HOME/.rvm/scripts/rvm"
-source "$HOME/.rvm/environments/default"
+source "${HOME}/.rvm/scripts/rvm"
+source "${HOME}/.rvm/environments/default"
+test -s "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# CPAN
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
