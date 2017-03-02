@@ -10,4 +10,4 @@ ln -sf $DIR/bashrc ~/.bashrc
 ln -sf $DIR/bash_login ~/.bash_login
 ln -sf $DIR/bash_logout ~/.bash_logout
 
-/usr/bin/env DIR=$DIR setup-common.sh
+/usr/bin/env DIR=$DIR $DIR/setup-common.sh

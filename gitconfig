@@ -31,6 +31,8 @@
     fl = log -u
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     sup = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+    usemnsid = config user.email "aaron@muscleandstrength.com"
+
 [user]
 	name = Aaron Bonner
 	email = ajbonner@gmail.com
@@ -41,6 +43,7 @@
 [core]
     symlinks = true
     preloadindex = true
+    editor = /usr/local/bin/vim
 [merge]
 	ff = only
 [pull]
