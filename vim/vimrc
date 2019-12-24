@@ -1,4 +1,4 @@
-" Use pathogen to manage our runtime files
+vim/vimrc" Use pathogen to manage our runtime files
 autocmd!
 call pathogen#infect('bundles/{}')
 
@@ -206,7 +206,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " Air Powerline setup
 set laststatus=2
 let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'wombat'
 let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -215,7 +214,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
-:set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h15
+:set guifont=mononoki\ Nerd\ Font\ Mono:h15
 
 " sql pretty
 vnoremap <Leader>rp :s/\<update\>\\|\<select\>\\|\<from\>\\|\<where>\\|\<left join\>\\|\<inner join\>\\|\<group by\>\\|\<order by\>/\r\U&/ge<cr><esc>
+
+silent! py3 pass
