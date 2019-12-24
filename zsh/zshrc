@@ -1,5 +1,14 @@
 ZSH="${HOME}/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
+
+plugins=(z git osx ssh-agent zsh-autosuggestions)
+
+# SSH Agent Config
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent identities id_rsa github/github_key
+#eval $(keychain -q -Q --eval --agents ssh --inherit any id_rsa github/github_key)
+#
+source $ZSH/oh-my-zsh.sh
 
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
@@ -19,53 +28,33 @@ alias irc='screen irssi -c irc.freenode.net'
 # Stop annoying 'did you mean sudo .vim'
 alias sudo="nocorrect sudo"
 
-alias portup='sudo port selfupdate && sudo port upgrade outdated && sudo port uninstall inactive'
 alias v='vagrant'
 alias vup="vagrant up --no-provision"
 alias vdown="vagrant halt"
-alias mou="open -a Mou.app"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(z git osx composer macports vagrant ssh-agent)
-
-source $ZSH/oh-my-zsh.sh
-
-# SSH Agent Config
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source ~/.bash_functions
 source ~/.bash_aliases
+
 export LESS="-r"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
+export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$PATH"
 
 [ -e ${HOME}/.dircolors ] && eval $(dircolors ${HOME}/.dircolors)
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-PATH="vendor/bin:$PATH"
-PATH="node_modules/.bin:$PATH"
-PATH="/Applications/apache-jmeter-3.0/bin:$PATH"
-
 # Load any private env vars
 [ -s "${HOME}/.bash_private" ] && source "${HOME}/.bash_private"
 [ -s "${HOME}/homebrew_env.sh" ] && source "${HOME}/homebrew_env.sh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-
-source "${HOME}/.rvm/scripts/rvm"
-source "${HOME}/.rvm/environments/default"
 test -s "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# CPAN
-PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="${HOME}perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
+export PATH="vendor/bin:$PATH"
+export PATH="node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
