@@ -1,0 +1,16 @@
+zsh
+zsh-completions
+zsh-autosuggestions
+coreutils
+moreutils
+findutils
+gawk
+git
+gnu-sed
+gnu-tar
+keychain
+reattach-to-user-namespace
+the_silver_searcher
+tmux
+xz
+readline
