@@ -24,5 +24,3 @@ fi
 if [ -e "$HOME/.dircolors" ]; then
   eval $(dircolors "$HOME/.dircolors")
 fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
