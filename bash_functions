@@ -82,11 +82,11 @@ function stage {
   if [ $# -gt 0 ]; then
     CAP_STAGE=$1
   fi
-  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) cap $CAP_STAGE deploy
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) bundle exec cap $CAP_STAGE deploy
 }
 
 function deploy {
-  cap production deploy
+  bundle exec cap production deploy
 }
 
 function listbranches() {
@@ -132,11 +132,15 @@ function add_key() {
 }
   
 upgrade_nvm() {
-    echo "\033[32mAbout to update NVM...\033[0m";
-    sleep 5
-    cd "$NVM_DIR"
-    git fetch -p
-    git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
-    source "$NVM_DIR/nvm.sh"
-    cd "$OLDPWD"
+  echo "\033[32mAbout to update NVM...\033[0m";
+  sleep 5
+  cd "$NVM_DIR"
+  git fetch -p
+  git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+  source "$NVM_DIR/nvm.sh"
+  cd "$OLDPWD"
+}
+
+sync_media() {
+  rsync -avz --delete 'abonner@db1:/srv/nfs4/store/media/*' media/ --exclude='*watermarked*' --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' --exclude='mnsresized' --exclude='purchasing' --exclude='customer/' --exclude='xmlconnect/'
 }
