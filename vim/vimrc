@@ -1,4 +1,4 @@
-vim/vimrc" Use pathogen to manage our runtime files
+" Use pathogen to manage our runtime files
 autocmd!
 call pathogen#infect('bundles/{}')
 
