@@ -13,9 +13,9 @@ fi
 GUEST=$1
 IMAGE_SRC=$2
 IMAGE_DEST="/var/lib/libvirt/images/${GUEST}"
-VMEM=8192
+VMEM=1024
 VCPUS=2
-VROOTSIZE=60G
+VROOTSIZE=20G
 NETWORK="bridge=virbr0,model=virtio"
 
 sudo mkdir -p $IMAGE_DEST
@@ -30,6 +30,7 @@ virt-install \
   --vcpus=${VCPUS} \
   --autostart \
   --memballoon virtio \
+  --graphics vnc,listen=0.0.0.0
   --network ${NETWORK} \
   --boot hd \
   --disk path=/var/lib/libvirt/images/${GUEST}/disk.img,format=qcow2,bus=virtio \
