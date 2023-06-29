@@ -12,6 +12,7 @@
     ci = commit
     ca = commit --amend
     br = branch
+    brnp = --no-pager branch
     cp = cherry-pick
     co = checkout
     cl = clone
@@ -45,6 +46,8 @@
     preloadindex = true
     editor = /usr/local/bin/vim
 [merge]
-	ff = only
+    ff = only
 [pull]
 	rebase = true
+[init]
+	defaultBranch = master

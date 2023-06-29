@@ -1,7 +1,7 @@
 # ~/.bash_functions
 
 function myip() {
-  wget -q http://icanhazip.com -O -
+  wget -4 -q http://icanhazip.com -O -
 }
 
 function pkgup() {
@@ -110,16 +110,17 @@ function mkv2mp4() {
 }
 
 function add_key() {
+  if [ ! $# -eq 1 ]; then
+    echo "Usage: add_key user@host"
+    return 1
+  fi
+
   if [ $(basename $SHELL) == "zsh" ]; then
     READ_CMD="read -A -r KEY_PARTS <<< $1"
   else 
     READ_CMD="read -a -r KEY_PARTS <<< $1"
   fi
 
-  if [ ! $# -eq 1 ]; then
-    echo "Usage: add_key user@host"
-    return 1
-  fi
   IFS="@" eval $READ_CMD
   KEY_FILE="$(find $HOME/.ssh/ -name ${KEY_PARTS[2]}_${KEY_PARTS[1]} | head -n 1)"
   
@@ -144,3 +145,16 @@ upgrade_nvm() {
 sync_media() {
   rsync -avz --delete 'abonner@db1:/srv/nfs4/store/media/*' media/ --exclude='*watermarked*' --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' --exclude='mnsresized' --exclude='purchasing' --exclude='customer/' --exclude='xmlconnect/'
 }
+
+sync_drupal_media() {
+  rsync -avz --delete 'abonner@db1:/srv/nfs4/drupal/sites/default/files/' files/  --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' 
+}
+
+dcsh() {
+  if [ ! $# -eq 1 ]; then
+    echo "Usage: dcsh <servicename>"
+    return 1
+  fi
+  docker compose exec -it $1 /bin/bash
+}
+
