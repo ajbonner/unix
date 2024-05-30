@@ -82,7 +82,21 @@ if [ $PLATFORM = 'Darwin' ]; then
   export PATH="/usr/local/opt/mysql-client/bin:$PATH"
   export PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
+
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
 export PATH="/usr/local/sbin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# bun completions
+[ -s "$HOME/.oh-my-zsh/completions/_bun" ] && source "/$HOME/.oh-my-zsh/completions/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

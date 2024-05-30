@@ -96,8 +96,7 @@ function listbranches() {
 }
 
 function mkv2mp4() {
-  if [ ! $# -eq 1 ]; then 
-    echo "Usage: mkv2mp4 <file.mkv>"
+  if [ ! $# -eq 1 ]; then echo "Usage: mkv2mp4 <file.mkv>"
     return 1
   fi
 
@@ -107,6 +106,14 @@ function mkv2mp4() {
   fi
 
   ffmpeg -i $1 -vcodec copy -acodec copy ${1%.*}.mp4
+}
+
+function extract_audio() {
+  if [ ! $# -eq 1 ]; then echo "Usage: extract_audio <somemediafile.mp4>"
+    return 1
+  fi
+
+  ffmpeg -i $1 -vn -acodec copy ${1%.*}.m4a
 }
 
 function add_key() {
@@ -158,3 +165,30 @@ dcsh() {
   docker compose exec -it $1 /bin/bash
 }
 
+dcr() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: dcsh servicename <optional args>"
+    return 1
+  fi
+  SERVICE=$1
+  shift
+  docker compose run --rm -it "${SERVICE}" "$@" 
+}
+
+ttfb() {
+  #!/bin/bash
+  # file: ttfb.sh
+  # curl command to check the time to first byte
+  # ** usage **
+  # 1. ./ttfb.sh "https://google.com"
+  # 2. seq 10 | xargs -Iz ./ttfb.sh "https://google.com"
+  curl -k -o /dev/null \
+       -H 'Cache-Control: no-cache' \
+       -s \
+       -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n" \
+       $1
+}
+
+quotify() {
+    cat $1 | sed -e "s/'/'\\\\''/g;s/\(.*\)/'\1'/;s/$/,/g"
+}

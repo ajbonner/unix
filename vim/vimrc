@@ -203,6 +203,9 @@ endif
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
+" Use fuzzyfinder
+set rtp+=/usr/local/opt/fzf
+
 " Air Powerline setup
 set laststatus=2
 let g:airline_powerline_fonts = 1

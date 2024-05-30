@@ -21,6 +21,29 @@ set output-meta on
 # set bell-style none
 # set bell-style visible
 
+set skip-completed-text on
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+
+# Do not autocomplete hidden files unless the pattern explicitly begins with a dot
+set match-hidden-files off
+
+# Show all autocomplete results at once
+set page-completions off
+
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
 # some defaults / modifications for the emacs mode
 $if mode=emacs
 
@@ -32,6 +55,9 @@ $if mode=emacs
 "\e[3~": delete-char
 "\e[2~": quoted-insert
 
+# Use Alt/Meta + Delete to delete the preceding word
+"\e[3;3~": kill-word
+
 # mappings for "page up" and "page down" to step to the beginning/end
 # of the history
 # "\e[5~": beginning-of-history
@@ -40,6 +66,11 @@ $if mode=emacs
 # alternate mappings for "page up" and "page down" to search the history
 # "\e[5~": history-search-backward
 # "\e[6~": history-search-forward
+
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
