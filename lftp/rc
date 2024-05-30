@@ -1,0 +1,2 @@
+set cmd:default-protocol sftp
+set color:use-color yes
