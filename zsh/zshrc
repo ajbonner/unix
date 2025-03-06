@@ -1,19 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 PLATFORM=$(uname -s)
-
 ZSH="${HOME}/.oh-my-zsh"
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="bureau"
+ZSH_THEME="spaceship"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+plugins=(z git ssh-agent zsh-autosuggestions zsh-navigation-tools docker)
 
-plugins=(z git ssh-agent zsh-autosuggestions zsh-navigation-tools ag docker)
 [ $PLATFORM = 'Darwin' ] && plugins+=(macos)
 
 # SSH Agent Config
@@ -53,18 +44,33 @@ source ~/.bash_aliases
 export LESS="-r"
 if [ $PLATFORM = 'Darwin' ]; then
   path=("/usr/local/opt/coreutils/libexec/gnubin" $path)
+  path=("/usr/local/opt/curl/bin" $path)
   path=("/usr/local/opt/findutils/libexec/gnubin" $path)
-  path=("/usr/local/opt/libtool/libexec/gnubin" $path)
   path=("/usr/local/opt/gawk/libexec/gnubin" $path)
   path=("/usr/local/opt/gnu-sed/libexec/gnubin" $path)
   path=("/usr/local/opt/gnu-tar/libexec/gnubin" $path)
-  path=("/usr/local/opt/curl/bin" $path)
+  path=("/usr/local/opt/gpatch/libexec/gnubin" $path)
+  path=("/usr/local/opt/libtool/libexec/gnubin" $path)
   path=("/Applications/VMware Fusion.app/Contents/Library" $path)
+  path=("/usr/local/Cellar/ansible-lint/25.1.1/libexec/bin" $path)
+  path=("/usr/local/opt/mysql-client/bin" $path)
+
+  if [ -d "/usr/local/opt/ruby/bin" ]; then
+    path=("/usr/local/opt/ruby/bin", $path)
+    path=(`gem environment gemdir`/bin, $path)
+  fi
+
+  if [ -d "/usr/local/opt/openjdk@21/bin" ]; then
+    path=("/usr/local/opt/openjdk@21/bin" $path)
+    export JAVA_HOME="/usr/local/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+  fi
+
   export MANPATH="/usr/local/share/man:$MANPATH"
   export MANPATH="/usr/local/opt/curl/share/man:$MANPATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   fpath=(/usr/local/share/zsh-completions $fpath)
+
   [ -s "${HOME}/homebrew_env.sh" ] && source "${HOME}/homebrew_env.sh"
   [ -s "${HOME}/.iterm2_shell_integration.zsh" ] && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
@@ -77,26 +83,6 @@ fi
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="vendor/bin:$PATH"
 export PATH="node_modules/.bin:$PATH"
-
-if [ $PLATFORM = 'Darwin' ]; then
-  export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
-fi
-
-if [ -d "/usr/local/opt/ruby/bin" ]; then
-  export PATH=/usr/local/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
 export PATH="/usr/local/sbin:$PATH"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# bun completions
-[ -s "$HOME/.oh-my-zsh/completions/_bun" ] && source "/$HOME/.oh-my-zsh/completions/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
