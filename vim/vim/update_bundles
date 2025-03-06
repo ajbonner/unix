@@ -3,51 +3,49 @@
 require 'fileutils'
 require 'open-uri'
 
-git_bundles = [ 
-  "https://github.com/henrik/vim-indexed-search",
-  "https://github.com/vim-scripts/taglist.vim",
-  #"https://github.com/msanders/snipmate.vim.git",
-  "https://github.com/scrooloose/nerdtree.git",
-  #"https://github.com/timcharper/textile.vim.git",
-  #"https://github.com/tpope/vim-cucumber.git",
-  "https://github.com/tpope/vim-fugitive.git",
-  #"https://github.com/tpope/vim-git.git",
-  #"https://github.com/tpope/vim-haml.git",
-  #"https://github.com/tpope/vim-markdown.git",
-  #"https://github.com/tpope/vim-rails.git",
-  "https://github.com/tpope/vim-repeat.git",
-  "https://github.com/tpope/vim-surround.git",
-  #"https://github.com/sunaku/vim-ruby-minitest",
-  "https://github.com/scrooloose/nerdcommenter",
-  #"https://github.com/tsaleh/vim-shoulda.git",
-  #"https://github.com/tsaleh/vim-align.git",
-  #"https://github.com/vim-ruby/vim-ruby.git",
-  #"https://github.com/kien/ctrlp.vim",
-  #"https://github.com/mileszs/ack.vim",
-  "https://github.com/jwhitley/vim-matchit",
-  "https://github.com/scrooloose/syntastic",
-  "https://github.com/bling/vim-airline",
-  "https://github.com/vim-airline/vim-airline-themes",
-  "https://github.com/sickill/vim-pasta",
-  "https://github.com/kana/vim-textobj-user",
-  "https://github.com/nelstrom/vim-textobj-rubyblock",
-  "https://github.com/sjbach/lusty",
-  #"https://github.com/beberlei/vim-php-refactor",
-  "https://github.com/austintaylor/vim-commaobject",
-  "https://github.com/kana/vim-textobj-entire",
-  "https://github.com/tpope/vim-unimpaired",
-  "https://github.com/Lokaltog/vim-easymotion",
-  "https://github.com/jeetsukumaran/vim-buffergator",
-  #"https://github.com/shawncplus/phpcomplete.vim",
-  "https://github.com/nelstrom/vim-visual-star-search",
-  #"https://github.com/Glench/Vim-Jinja2-Syntax",
-  "https://github.com/Valloric/YouCompleteMe",
-  #"https://github.com/chase/vim-ansible-yaml",
-  #"https://github.com/gregsexton/MatchTag",
-  #"https://github.com/Townk/vim-autoclose",
-  #"https://github.com/alvan/vim-closetag"
-  "https://github.com/altercation/vim-colors-solarized.git"
-]
+git_bundles = %w( 
+  https://github.com/henrik/vim-indexed-search
+  https://github.com/vim-scripts/taglist.vim
+  https://github.com/garbas/vim-snipmate
+  https://github.com/scrooloose/nerdtree
+  https://github.com/timcharper/textile.vim
+  https://github.com/tpope/vim-fugitive
+  https://github.com/tpope/vim-git
+  https://github.com/tpope/vim-markdown
+  https://github.com/tpope/vim-repeat
+  https://github.com/tpope/vim-surround
+  https://github.com/scrooloose/nerdcommenter
+  https://github.com/tsaleh/vim-shoulda
+  https://github.com/tsaleh/vim-align
+  https://github.com/vim-ruby/vim-ruby
+  https://github.com/jwhitley/vim-matchit
+  https://github.com/scrooloose/syntastic
+  https://github.com/bling/vim-airline
+  https://github.com/vim-airline/vim-airline-themes
+  https://github.com/sickill/vim-pasta
+  https://github.com/kana/vim-textobj-user
+  https://github.com/nelstrom/vim-textobj-rubyblock
+  https://github.com/sjbach/lusty
+  https://github.com/austintaylor/vim-commaobject
+  https://github.com/kana/vim-textobj-entire
+  https://github.com/tpope/vim-unimpaired
+  https://github.com/Lokaltog/vim-easymotion
+  https://github.com/jeetsukumaran/vim-buffergator
+  https://github.com/nelstrom/vim-visual-star-search
+  https://github.com/Glench/Vim-Jinja2-Syntax
+  https://github.com/Valloric/YouCompleteMe
+  https://github.com/chase/vim-ansible-yaml
+  https://github.com/gregsexton/MatchTag
+  https://github.com/Townk/vim-autoclose
+  https://github.com/alvan/vim-closetag
+  https://github.com/MarcWeber/vim-addon-mw-utils
+  https://github.com/altercation/vim-colors-solarized.git
+  https://github.com/lambdalisue/vim-suda
+)
+
+disabled_bundles = %w(
+  https://github.com/shawncplus/phpcomplete.vim
+)
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundles")
 
@@ -69,5 +67,4 @@ git_bundles.each do |url|
   next unless should_update dir
   puts "  Unpacking #{url} into #{dir}"
   `git clone #{url} #{dir}`
-  #FileUtils.rm_rf(File.join(dir, ".git"))
 end

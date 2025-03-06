@@ -6,7 +6,6 @@ filetype plugin indent on
 syntax on
 
 " Basic vim setup
-set nocompatible
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -187,24 +186,20 @@ let Tlist_WinWidth = 40
 let Tlist_Close_on_Select = 1
 let Tlist_Exit_OnlyWindow = 1
 
-" CtrlP setup
-if executable('ag')
-  " Use Ag over Grep
-  let grepprg="ag\ --nogroup\ --nocolor"
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore "**/*.pyc"
-        \ -g ""'
+" setup python path
+if executable('/usr/local/bin/python3')
+  let g:python3_host_prog='/usr/local/bin/python3'
 endif
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" setup ruby path
+if executable('/usr/local/opt/ruby/bin/ruby')
+  let g:ruby_host_prog='/usr/local/opt/ruby/bin/ruby'
+endif
 
 " Use fuzzyfinder
-set rtp+=/usr/local/opt/fzf
+if executable('/usr/local/bin/fzf')
+  set rtp+=/usr/local/opt/fzf
+endif
 
 " Air Powerline setup
 set laststatus=2
@@ -217,9 +212,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
-:set guifont=mononoki\ Nerd\ Font\ Mono:h15
+:set guifont=MesloLGS\ Nerd\ Font\ Mono:h16
 
 " sql pretty
 vnoremap <Leader>rp :s/\<update\>\\|\<select\>\\|\<from\>\\|\<where>\\|\<left join\>\\|\<inner join\>\\|\<group by\>\\|\<order by\>/\r\U&/ge<cr><esc>
+
 
 silent! py3 pass
