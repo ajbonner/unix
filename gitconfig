@@ -33,6 +33,7 @@
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     sup = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
     usemnsid = config user.email "aaron@muscleandstrength.com"
+    smu = submodule update --remote --recursive --rebase
 
 [user]
 	name = Aaron Bonner
