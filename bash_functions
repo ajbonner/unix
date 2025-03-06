@@ -192,3 +192,8 @@ ttfb() {
 quotify() {
     cat $1 | sed -e "s/'/'\\\\''/g;s/\(.*\)/'\1'/;s/$/,/g"
 }
+
+pbquotify() {
+    pbpaste | sed -e "s/'/'\\\\''/g;s/\(.*\)/'\1'/;s/$/,/g"
+}
+
