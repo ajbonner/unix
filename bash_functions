@@ -165,6 +165,12 @@ dcsh() {
   docker compose exec -it $1 /bin/bash
 }
 
+virsh_startall() {
+  for i in $(virsh list --all|awk '{print $2}'|grep -v Name); do
+    virsh start $i
+  done
+}
+
 dcr() {
   if [ $# -lt 1 ]; then
     echo "Usage: dcsh servicename <optional args>"

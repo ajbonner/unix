@@ -11,7 +11,6 @@ alias genpwd="apg -m15 -a0 -MCNS"
 alias brewup="brew update && brew upgrade && brew cleanup"
 alias dc="docker compose"
 alias xdebug="php -dxdebug.mode=debug -dxdebug.start_with_request=1"
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -19,7 +18,4 @@ alias d="docker"
 alias ff="fzf --preview "\''bat --style=numbers --color=always {}'\'''
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="lt -a"
-
-
 /usr/bin/env which -s nvim && alias vim=nvim
-

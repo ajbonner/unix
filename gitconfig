@@ -45,7 +45,7 @@
 [core]
     symlinks = true
     preloadindex = true
-    editor = /usr/local/bin/vim
+    editor = /usr/bin/nvim
 [merge]
     ff = only
 [pull]
