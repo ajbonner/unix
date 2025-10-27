@@ -150,11 +150,11 @@ upgrade_nvm() {
 }
 
 sync_media() {
-  rsync -avz --delete 'abonner@db1:/srv/nfs4/store/media/*' media/ --exclude='*watermarked*' --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' --exclude='mnsresized' --exclude='purchasing' --exclude='customer/' --exclude='xmlconnect/'
+  rsync -avz --delete 'abonner@newdb1:/srv/exports/store/media/*' media/ --exclude='*watermarked*' --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' --exclude='mnsresized' --exclude='purchasing' --exclude='customer/' --exclude='xmlconnect/'
 }
 
 sync_drupal_media() {
-  rsync -avz --delete 'abonner@db1:/srv/nfs4/drupal/sites/default/files/' files/  --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css' 
+  rsync -avz --delete 'abonner@db1:/srv/exports/drupal/sites/default/files/' files/  --exclude='*cache*' --exclude='.thumbs' --exclude='js'  --exclude='css'
 }
 
 dcsh() {
